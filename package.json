@@ -1,0 +1,32 @@
+{
+  "name": "saas-starter-with-monorepo",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "type": "module",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "check-types": "turbo check-types",
+    "dev:native": "turbo -F native dev",
+    "dev:web": "turbo -F web dev",
+    "db:push": "turbo -F @saas-starter-with-monorepo/db db:push",
+    "db:studio": "turbo -F @saas-starter-with-monorepo/db db:studio",
+    "db:generate": "turbo -F @saas-starter-with-monorepo/db db:generate",
+    "db:migrate": "turbo -F @saas-starter-with-monorepo/db db:migrate"
+  },
+  "dependencies": {
+    "dotenv": "catalog:",
+    "zod": "catalog:",
+    "@saas-starter-with-monorepo/env": "workspace:*"
+  },
+  "devDependencies": {
+    "turbo": "^2.6.3",
+    "typescript": "catalog:",
+    "@types/node": "^22.13.11",
+    "@saas-starter-with-monorepo/config": "workspace:*"
+  },
+  "packageManager": "pnpm@8.14.0"
+}

@@ -1,0 +1,17 @@
+{
+  "expo": {
+    "scheme": "saas-starter-with-monorepo",
+    "userInterfaceStyle": "automatic",
+    "orientation": "default",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "saas-starter-with-monorepo",
+    "slug": "saas-starter-with-monorepo",
+    "plugins": ["expo-font"],
+    "experiments": {
+      "typedRoutes": true,
+      "reactCompiler": true
+    }
+  }
+}

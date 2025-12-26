@@ -1,0 +1,3 @@
+{
+  "extends": "@saas-starter-with-monorepo/config/tsconfig.base.json"
+}
