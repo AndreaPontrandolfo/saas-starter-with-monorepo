@@ -1,4 +1,6 @@
 import { StrictMode } from "react";
+import "@mantine/core/styles.css";
+import "@mantine/notifications/styles.css";
 import type { QueryClient } from "@tanstack/react-query";
 
 import { ReactQueryDevtoolsPanel } from "@tanstack/react-query-devtools";
@@ -16,7 +18,7 @@ import type { orpc } from "@/utils/orpc";
 import { Toaster } from "@/components/ui/sonner";
 
 import Header from "../components/header";
-import appCss from "../index.css?url";
+import { MantineProvider } from "@mantine/core";
 
 export interface RouterAppContext {
   orpc: typeof orpc;
@@ -51,31 +53,33 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 function RootDocument() {
   return (
     <StrictMode>
-      <html lang="en" className="dark">
-        <head>
-          <HeadContent />
-        </head>
-        <body>
-          <div className="grid h-svh grid-rows-[auto_1fr]">
-            <Header />
-            <Outlet />
-          </div>
-          <Toaster richColors />
-          <Scripts />
-        </body>
-      </html>
-      <TanStackDevtools
-        plugins={[
-          {
-            name: "TanStack Query",
-            render: <ReactQueryDevtoolsPanel />,
-          },
-          {
-            name: "TanStack Router",
-            render: <TanStackRouterDevtoolsPanel />,
-          },
-        ]}
-      />
+      <MantineProvider>
+        <html lang="en" className="dark">
+          <head>
+            <HeadContent />
+          </head>
+          <body>
+            <div className="grid h-svh grid-rows-[auto_1fr]">
+              <Header />
+              <Outlet />
+            </div>
+            <Toaster richColors />
+            <Scripts />
+          </body>
+        </html>
+        <TanStackDevtools
+          plugins={[
+            {
+              name: "TanStack Query",
+              render: <ReactQueryDevtoolsPanel />,
+            },
+            {
+              name: "TanStack Router",
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+          ]}
+        />
+      </MantineProvider>
     </StrictMode>
   );
 }
