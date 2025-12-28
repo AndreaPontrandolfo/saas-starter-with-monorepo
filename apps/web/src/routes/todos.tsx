@@ -1,12 +1,20 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { Loader2, Trash2 } from "lucide-react";
+import { IconTrash } from "@tabler/icons-react";
 import { useState } from "react";
-
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Input } from "@/components/ui/input";
+import {
+  Button,
+  Card,
+  TextInput,
+  Checkbox,
+  Stack,
+  Group,
+  Text,
+  Loader,
+  Center,
+  Paper,
+  ActionIcon,
+} from "@mantine/core";
 import { orpc } from "@/utils/orpc";
 
 export const Route = createFileRoute("/todos")({
@@ -56,65 +64,76 @@ function TodosRoute() {
   };
 
   return (
-    <div className="mx-auto w-full max-w-md py-10">
-      <Card>
-        <CardHeader>
-          <CardTitle>Todo List</CardTitle>
-          <CardDescription>Manage your tasks efficiently</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <form onSubmit={handleAddTodo} className="mb-6 flex items-center space-x-2">
-            <Input
-              value={newTodoText}
-              onChange={(e) => setNewTodoText(e.target.value)}
-              placeholder="Add a new task..."
-              disabled={createMutation.isPending}
-            />
-            <Button type="submit" disabled={createMutation.isPending || !newTodoText.trim()}>
-              {createMutation.isPending ? <Loader2 className="h-4 w-4 animate-spin" /> : "Add"}
-            </Button>
+    <Center py="xl">
+      <Card w="100%" maw={500} p="md">
+        <Stack gap="md">
+          <div>
+            <Text size="lg" fw={500}>
+              Todo List
+            </Text>
+            <Text size="sm" c="dimmed">
+              Manage your tasks efficiently
+            </Text>
+          </div>
+
+          <form onSubmit={handleAddTodo}>
+            <Group gap="xs">
+              <TextInput
+                style={{ flex: 1 }}
+                value={newTodoText}
+                onChange={(e) => setNewTodoText(e.target.value)}
+                placeholder="Add a new task..."
+                disabled={createMutation.isPending}
+              />
+              <Button type="submit" disabled={createMutation.isPending || !newTodoText.trim()}>
+                {createMutation.isPending ? <Loader size="sm" /> : "Add"}
+              </Button>
+            </Group>
           </form>
 
           {todos.isLoading ? (
-            <div className="flex justify-center py-4">
-              <Loader2 className="h-6 w-6 animate-spin" />
-            </div>
+            <Center py="xl">
+              <Loader />
+            </Center>
           ) : todos.data?.length === 0 ? (
-            <p className="py-4 text-center">No todos yet. Add one above!</p>
+            <Text py="xl" ta="center" c="dimmed">
+              No todos yet. Add one above!
+            </Text>
           ) : (
-            <ul className="space-y-2">
+            <Stack gap="xs">
               {todos.data?.map((todo) => (
-                <li
-                  key={todo.id}
-                  className="flex items-center justify-between rounded-md border p-2"
-                >
-                  <div className="flex items-center space-x-2">
-                    <Checkbox
-                      checked={todo.completed}
-                      onCheckedChange={() => handleToggleTodo(todo.id, todo.completed)}
-                      id={`todo-${todo.id}`}
-                    />
-                    <label
-                      htmlFor={`todo-${todo.id}`}
-                      className={`${todo.completed ? "line-through" : ""}`}
+                <Paper key={todo.id} p="sm" withBorder>
+                  <Group justify="space-between">
+                    <Group gap="xs">
+                      <Checkbox
+                        checked={todo.completed}
+                        onChange={() => handleToggleTodo(todo.id, todo.completed)}
+                        id={`todo-${todo.id}`}
+                      />
+                      <Text
+                        component="label"
+                        htmlFor={`todo-${todo.id}`}
+                        td={todo.completed ? "line-through" : "none"}
+                        style={{ cursor: "pointer" }}
+                      >
+                        {todo.text}
+                      </Text>
+                    </Group>
+                    <ActionIcon
+                      variant="subtle"
+                      color="red"
+                      onClick={() => handleDeleteTodo(todo.id)}
+                      aria-label="Delete todo"
                     >
-                      {todo.text}
-                    </label>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="icon"
-                    onClick={() => handleDeleteTodo(todo.id)}
-                    aria-label="Delete todo"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </Button>
-                </li>
+                      <IconTrash size={16} />
+                    </ActionIcon>
+                  </Group>
+                </Paper>
               ))}
-            </ul>
+            </Stack>
           )}
-        </CardContent>
+        </Stack>
       </Card>
-    </div>
+    </Center>
   );
 }

@@ -1,7 +1,9 @@
+import { Center, Loader as MantineLoader } from "@mantine/core";
+
 export default function Loader() {
   return (
-    <div className="flex h-full items-center justify-center pt-8">
-      Loading...
-    </div>
+    <Center h="100%" pt="xl">
+      <MantineLoader />
+    </Center>
   );
 }

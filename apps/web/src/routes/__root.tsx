@@ -16,7 +16,7 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 import type { orpc } from "@/utils/orpc";
 
 import Header from "../components/header";
-import { MantineProvider } from "@mantine/core";
+import { MantineProvider, AppShell } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
 
 export interface RouterAppContext {
@@ -38,12 +38,6 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
         title: "My App",
       },
     ],
-    links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
-    ],
   }),
 
   component: RootDocument,
@@ -52,17 +46,21 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
 function RootDocument() {
   return (
     <StrictMode>
-      <MantineProvider>
+      <MantineProvider defaultColorScheme="dark">
         <Notifications />
-        <html lang="en" className="dark">
+        <html lang="en">
           <head>
             <HeadContent />
           </head>
           <body>
-            <div className="grid h-svh grid-rows-[auto_1fr]">
-              <Header />
-              <Outlet />
-            </div>
+            <AppShell header={{ height: "auto" }}>
+              <AppShell.Header>
+                <Header />
+              </AppShell.Header>
+              <AppShell.Main>
+                <Outlet />
+              </AppShell.Main>
+            </AppShell>
             <Scripts />
           </body>
         </html>

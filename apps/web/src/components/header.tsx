@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { Group, Anchor, Divider } from "@mantine/core";
 
 export default function Header() {
   const links = [
@@ -8,19 +9,25 @@ export default function Header() {
 
   return (
     <div>
-      <div className="flex flex-row items-center justify-between px-2 py-1">
-        <nav className="flex gap-4 text-lg">
+      <Group justify="space-between" px="xs" py="xs">
+        <Group gap="md">
           {links.map(({ to, label }) => {
             return (
-              <Link key={to} to={to}>
+              <Anchor
+                key={to}
+                component={Link}
+                to={to}
+                size="lg"
+                style={{ textDecoration: "none" }}
+              >
                 {label}
-              </Link>
+              </Anchor>
             );
           })}
-        </nav>
-        <div className="flex items-center gap-2"></div>
-      </div>
-      <hr />
+        </Group>
+        <Group gap="xs"></Group>
+      </Group>
+      <Divider />
     </div>
   );
 }

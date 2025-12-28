@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
+import { Container, Paper, Stack, Group, Text, Indicator, Code } from "@mantine/core";
 import { orpc } from "@/utils/orpc";
 
 export const Route = createFileRoute("/")({
@@ -10,27 +11,31 @@ function HomeComponent() {
   const healthCheck = useQuery(orpc.healthCheck.queryOptions());
 
   return (
-    <div className="container mx-auto max-w-3xl px-4 py-2">
-      <pre className="overflow-x-auto font-mono text-sm">Demo</pre>
-      <div className="grid gap-6">
-        <section className="rounded-lg border p-4">
-          <h2 className="mb-2 font-medium">API Status</h2>
-          <div className="flex items-center gap-2">
-            <div
-              className={`h-2 w-2 rounded-full ${
-                healthCheck.data ? "bg-green-500" : "bg-red-500"
-              }`}
-            />
-            <span className="text-muted-foreground text-sm">
-              {healthCheck.isLoading
-                ? "Checking..."
-                : healthCheck.data
-                ? "Connected"
-                : "Disconnected"}
-            </span>
-          </div>
-        </section>
-      </div>
-    </div>
+    <Container size="md" py="xs" px="md">
+      <Code block p="xs">
+        Demo
+      </Code>
+      <Stack gap="lg" mt="md">
+        <Paper p="md" withBorder>
+          <Stack gap="xs">
+            <Text fw={500}>API Status</Text>
+            <Group gap="xs">
+              <Indicator
+                color={healthCheck.data ? "green" : "red"}
+                processing={healthCheck.isLoading}
+                size={8}
+              />
+              <Text size="sm" c="dimmed">
+                {healthCheck.isLoading
+                  ? "Checking..."
+                  : healthCheck.data
+                  ? "Connected"
+                  : "Disconnected"}
+              </Text>
+            </Group>
+          </Stack>
+        </Paper>
+      </Stack>
+    </Container>
   );
 }
