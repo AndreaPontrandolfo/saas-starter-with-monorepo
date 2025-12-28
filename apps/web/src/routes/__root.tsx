@@ -18,6 +18,7 @@ import type { orpc } from "@/utils/orpc";
 import Header from "../components/header";
 import { MantineProvider, AppShell } from "@mantine/core";
 import { Notifications } from "@mantine/notifications";
+import { AuthProvider } from "../contexts/auth";
 
 export interface RouterAppContext {
   orpc: typeof orpc;
@@ -48,34 +49,36 @@ function RootDocument() {
     <StrictMode>
       <MantineProvider defaultColorScheme="dark">
         <Notifications />
-        <html lang="en">
-          <head>
-            <HeadContent />
-          </head>
-          <body>
-            <AppShell header={{ height: "auto" }}>
-              <AppShell.Header>
-                <Header />
-              </AppShell.Header>
-              <AppShell.Main>
-                <Outlet />
-              </AppShell.Main>
-            </AppShell>
-            <Scripts />
-          </body>
-        </html>
-        <TanStackDevtools
-          plugins={[
-            {
-              name: "TanStack Query",
-              render: <ReactQueryDevtoolsPanel />,
-            },
-            {
-              name: "TanStack Router",
-              render: <TanStackRouterDevtoolsPanel />,
-            },
-          ]}
-        />
+        <AuthProvider>
+          <html lang="en">
+            <head>
+              <HeadContent />
+            </head>
+            <body>
+              <AppShell header={{ height: "auto" }}>
+                <AppShell.Header>
+                  <Header />
+                </AppShell.Header>
+                <AppShell.Main>
+                  <Outlet />
+                </AppShell.Main>
+              </AppShell>
+              <Scripts />
+            </body>
+          </html>
+          <TanStackDevtools
+            plugins={[
+              {
+                name: "TanStack Query",
+                render: <ReactQueryDevtoolsPanel />,
+              },
+              {
+                name: "TanStack Router",
+                render: <TanStackRouterDevtoolsPanel />,
+              },
+            ]}
+          />
+        </AuthProvider>
       </MantineProvider>
     </StrictMode>
   );

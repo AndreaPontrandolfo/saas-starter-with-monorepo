@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { IconTrash } from "@tabler/icons-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Button,
   Card,
@@ -16,6 +16,7 @@ import {
   ActionIcon,
 } from "@mantine/core";
 import { supabase } from "@/utils/supabase";
+import { useAuth } from "@/contexts/auth";
 
 export const Route = createFileRoute("/todos")({
   component: TodosRoute,
@@ -25,32 +26,48 @@ interface Todo {
   id: number;
   text: string;
   completed: boolean;
+  user_id: string;
 }
 
 function TodosRoute() {
+  const { user, loading: authLoading } = useAuth();
+  const navigate = useNavigate();
   const [newTodoText, setNewTodoText] = useState("");
 
-  // Fetch todos from Supabase
+  // Redirect to login if not authenticated
+  useEffect(() => {
+    if (!authLoading && !user) {
+      navigate({ to: "/login", search: { next: "/todos" } });
+    }
+  }, [user, authLoading, navigate]);
+
+  // Fetch todos from Supabase (scoped to current user)
   const todos = useQuery({
-    queryKey: ["todos"],
+    queryKey: ["todos", user?.id],
     queryFn: async () => {
+      if (!user) return [];
+
       const response = await supabase
         .from("todos")
         .select("*")
+        .eq("user_id", user.id)
         .order("id", { ascending: true });
       const { data, error } = response;
 
       if (error) throw error;
       return data as Todo[];
     },
+    enabled: !!user,
   });
 
   // Create todo mutation
   const createMutation = useMutation({
     mutationFn: async (text: string) => {
+      if (!user) throw new Error("Not authenticated");
+
       const { data, error } = await supabase
         .from("todos")
-        .insert([{ text, completed: false }])
+        .insert([{ text, completed: false, user_id: user.id }])
         .select()
         .single();
 
@@ -110,6 +127,20 @@ function TodosRoute() {
   const handleDeleteTodo = (id: number) => {
     deleteMutation.mutate(id);
   };
+
+  // Show loader while checking auth
+  if (authLoading) {
+    return (
+      <Center py="xl">
+        <Loader size="lg" />
+      </Center>
+    );
+  }
+
+  // Don't render if not authenticated (will redirect)
+  if (!user) {
+    return null;
+  }
 
   return (
     <Center py="xl">
