@@ -15,10 +15,9 @@ import { TanStackDevtools } from "@tanstack/react-devtools";
 
 import type { orpc } from "@/utils/orpc";
 
-import { Toaster } from "@/components/ui/sonner";
-
 import Header from "../components/header";
 import { MantineProvider } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 
 export interface RouterAppContext {
   orpc: typeof orpc;
@@ -54,6 +53,7 @@ function RootDocument() {
   return (
     <StrictMode>
       <MantineProvider>
+        <Notifications />
         <html lang="en" className="dark">
           <head>
             <HeadContent />
@@ -63,7 +63,6 @@ function RootDocument() {
               <Header />
               <Outlet />
             </div>
-            <Toaster richColors />
             <Scripts />
           </body>
         </html>

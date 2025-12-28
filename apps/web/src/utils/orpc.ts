@@ -8,16 +8,17 @@ import { createContext } from "@saas-starter-with-monorepo/api/context";
 import { appRouter } from "@saas-starter-with-monorepo/api/routers/index";
 import { QueryCache, QueryClient } from "@tanstack/react-query";
 import { createIsomorphicFn } from "@tanstack/react-start";
-import { toast } from "sonner";
+import { notifications } from "@mantine/notifications";
 
 export const queryClient = new QueryClient({
   queryCache: new QueryCache({
     onError: (error, query) => {
-      toast.error(`Error: ${error.message}`, {
-        action: {
-          label: "retry",
-          onClick: query.invalidate,
-        },
+      notifications.show({
+        title: "Error",
+        message: error.message,
+        color: "red",
+        withCloseButton: true,
+        autoClose: 5000,
       });
     },
   }),
@@ -29,7 +30,7 @@ const getORPCClient = createIsomorphicFn()
       context: async ({ req }) => {
         return createContext({ req });
       },
-    }),
+    })
   )
   .client((): RouterClient<typeof appRouter> => {
     const link = new RPCLink({
