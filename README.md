@@ -25,16 +25,27 @@ pnpm install
 
 ## Database Setup
 
-This project uses PostgreSQL with Drizzle ORM.
+This project uses Supabase for the database with client-side queries.
 
-1. Make sure you have a PostgreSQL database set up.
-2. Update your `apps/web/.env` file with your PostgreSQL connection details.
+### Quick Start with Supabase
 
-3. Apply the schema to your database:
+1. Create a Supabase project at [https://supabase.com/dashboard](https://supabase.com/dashboard)
+2. Set up your environment variables in `apps/web/.env`:
+
+```sh
+VITE_SUPABASE_URL=https://your-project.supabase.co
+VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY=your-publishable-default-key-here
+```
+
+3. Run the SQL from `SUPABASE_SETUP.md` in your Supabase SQL Editor to create the `todos` table
+
+4. Start the dev server:
 
 ```bash
-pnpm run db:push
+pnpm run dev
 ```
+
+That's it! Your todos will now persist in Supabase.
 
 Then, run the development server:
 
@@ -76,7 +87,38 @@ For Expo connectivity issues, update `apps/native/.env` with your local IP addre
 EXPO_PUBLIC_SERVER_URL=http://<YOUR_LOCAL_IP>:3001
 ```
 
-## For Supabase manual setup
+## Supabase Setup
+
+### Production Environment
+
+To use Supabase in production, you need to configure the following environment variables for the web app:
+
+**Required environment variables:**
+
+- `VITE_SUPABASE_URL` - Your Supabase project URL (e.g., `https://your-project.supabase.co`)
+- `VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY` - Your Supabase publishable default key
+
+**Where to set these:**
+
+- **Local development**: Create a `.env` file in `apps/web/` directory with:
+  ```sh
+  VITE_SUPABASE_URL=https://your-project.supabase.co
+  VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY=your-publishable-default-key-here
+  ```
+- **Production deployment**: Set these as environment variables in your hosting provider's dashboard (Vercel, Netlify, Cloudflare Pages, etc.)
+
+**Security Note:** The anon key is safe to expose in client-side code. Make sure Row Level Security (RLS) is enabled on your Supabase tables to protect your data.
+
+**Using the Supabase client:**
+Import the pre-configured Supabase client in your web app:
+
+```typescript
+import { supabase } from "./utils/supabase";
+```
+
+### Local Supabase Setup (Optional)
+
+For local development with Supabase CLI:
 
 1. Ensure Docker is installed and running.
 2. Install the Supabase CLI (e.g., `npm install -g supabase`).
