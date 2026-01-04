@@ -5,7 +5,9 @@
   "scripts": {
     "build": "vite build",
     "serve": "vite preview",
-    "dev": "vite dev"
+    "dev": "vite dev",
+    "supabase:types": "supabase gen types typescript --local > src/database.types.ts",
+    "supabase:types:remote": "supabase gen types typescript --project-id \"$PROJECT_REF\" > src/database.types.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.0.0",
@@ -44,6 +46,7 @@
     "postcss": "^8.5.6",
     "postcss-preset-mantine": "^1.18.0",
     "postcss-simple-vars": "^7.0.1",
+    "supabase": ">=1.8.1",
     "typescript": "catalog:",
     "vite": "^8.0.0-beta.5"
   }
