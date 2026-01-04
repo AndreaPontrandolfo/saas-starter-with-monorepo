@@ -17,6 +17,7 @@ import {
 } from "@mantine/core";
 import { supabase } from "@/utils/supabase";
 import { useAuth } from "@/contexts/auth";
+import { notifications } from "@mantine/notifications";
 
 export const Route = createFileRoute("/todos")({
   component: TodosRoute,
@@ -78,6 +79,15 @@ function TodosRoute() {
       todos.refetch();
       setNewTodoText("");
     },
+    onError: (error) => {
+      notifications.show({
+        title: "Error creating todo",
+        message:
+          error instanceof Error ? error.message : "Failed to create todo",
+        color: "red",
+        autoClose: 5000,
+      });
+    },
   });
 
   // Toggle todo mutation
@@ -89,7 +99,7 @@ function TodosRoute() {
       id: number;
       completed: boolean;
     }) => {
-      const { error } = await supabase
+      const { error, status, statusText, data } = await supabase
         .from("todos")
         .update({ completed: !completed })
         .eq("id", id);
@@ -121,6 +131,7 @@ function TodosRoute() {
   };
 
   const handleToggleTodo = (id: number, completed: boolean) => {
+    console.log("🚀 ~ handleToggleTodo ~ completed:", completed);
     toggleMutation.mutate({ id, completed });
   };
 
