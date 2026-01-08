@@ -1,17 +1,37 @@
 {
-  "$schema": "https://turbo.build/schema.json",
+  "$schema": "./node_modules/turbo/schema.json",
+  "globalDependencies": ["**/.env.*local", "**/.env"],
   "ui": "tui",
+
   "tasks": {
+    "transit": {
+      "dependsOn": ["^transit"]
+    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
       "outputs": ["dist/**"]
     },
-    "lint": {
-      "dependsOn": ["^lint"]
+    "typecheck": {
+      "dependsOn": ["transit"],
+      "outputs": ["node_modules/.cache/tsbuildinfo.json"]
     },
-    "check-types": {
-      "dependsOn": ["^check-types"]
+    "lint": {
+      "dependsOn": ["transit"]
+    },
+    "sheriff": {
+      "dependsOn": ["transit"]
+    },
+    "publint": {
+      "dependsOn": ["transit"]
+    },
+    "//#diagnostics:check-deps": {},
+    "//#diagnostics:report-dead-code": {
+      "outputs": ["node_modules/.cache/knip/**"]
+    },
+    "//#diagnostics:typesync": {},
+    "//#diagnostics:report-dead-code-extra": {
+      "outputs": ["node_modules/.cache/knip/**"]
     },
     "dev": {
       "cache": false,
@@ -32,6 +52,28 @@
     "db:generate": {
       "cache": false,
       "persistent": true
+    },
+    "graphql-codegen:watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "appwrite-codegen-types": {
+      "outputs": ["src/generated/appwrite.ts"]
+    },
+    "start": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "persistent": true
+    },
+    "clean": {
+      "cache": false
+    },
+    "test": {
+      "dependsOn": ["transit"],
+      "outputs": [
+        "vitest-output/coverage/**",
+        "node_modules/.cache/vitest/results.json"
+      ]
     }
   }
 }
