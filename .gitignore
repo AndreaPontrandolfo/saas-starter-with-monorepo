@@ -48,3 +48,10 @@ coverage
 .cache
 tmp
 temp
+
+node_modules
+coverage
+dist
+build
+.pnpm-store
+.turbo
