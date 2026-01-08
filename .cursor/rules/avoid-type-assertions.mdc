@@ -1,0 +1,17 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+# Avoid type assertions
+
+Avoid using Typescript type assertions as much as possible.
+
+## Examples
+
+### Wrong
+
+```ts
+const x = "1" as number;
+```

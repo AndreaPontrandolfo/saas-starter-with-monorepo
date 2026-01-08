@@ -1,0 +1,24 @@
+---
+description:
+globs:
+alwaysApply: true
+---
+
+# Avoid abbreviations
+
+When naming variables or parameters, avoid using 1-letter abbreviations, if possible.
+Avoid abbreviations in general, especially extreme abbreviations.
+
+## Examples
+
+### Wrong
+
+```ts
+const s = "mystring";
+```
+
+### Correct
+
+```ts
+const myString = "mystring";
+```
