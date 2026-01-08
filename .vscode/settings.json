@@ -1,7 +1,5 @@
 {
-  "emmet.includeLanguages": {
-    "postcss": "css"
-  },
+  //#region TanStack Start
   "files.watcherExclude": {
     "**/routeTree.gen.ts": true
   },
@@ -11,6 +9,11 @@
   "files.readonlyInclude": {
     "**/routeTree.gen.ts": true
   },
+  //#endregion TanStack Start
+  //#region Mantine
+  "emmet.includeLanguages": {
+    "postcss": "css"
+  },
   "cssVariables.lookupFiles": [
     "**/*.css",
     "**/*.scss",
@@ -18,24 +21,38 @@
     "**/*.less",
     "node_modules/@mantine/core/styles.css"
   ],
+  //#endregion Mantine
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
     "source.organizeImports": "never"
   },
-  "[javascript]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "*.ts": "${capture}.test.ts",
+    "*.tsx": "${capture}.spec.ts"
   },
-  "[javascriptreact]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.preferences.preferTypeOnlyAutoImports": true,
+  "typescript.preferGoToSourceDefinition": true,
+  "typescript.suggest.completeFunctionCalls": true,
+  "json.schemaDownload.enable": true,
+  "turbo.useLocalTurbo": true,
+  "editor.linkedEditing": true,
+  "editor.suggest.localityBonus": true,
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "on"
   },
-  "[typescriptreact]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[typescript]": {
-    "editor.formatOnSave": true,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  "npm-intellisense.showBuildInLibs": true,
+  "npm-intellisense.scanDevDependencies": true
 }

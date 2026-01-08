@@ -2,7 +2,6 @@
   "$schema": "./node_modules/turbo/schema.json",
   "globalDependencies": ["**/.env.*local", "**/.env"],
   "ui": "tui",
-
   "tasks": {
     "transit": {
       "dependsOn": ["^transit"]
@@ -29,7 +28,6 @@
     "//#diagnostics:report-dead-code": {
       "outputs": ["node_modules/.cache/knip/**"]
     },
-    "//#diagnostics:typesync": {},
     "//#diagnostics:report-dead-code-extra": {
       "outputs": ["node_modules/.cache/knip/**"]
     },
@@ -53,18 +51,11 @@
       "cache": false,
       "persistent": true
     },
-    "graphql-codegen:watch": {
-      "cache": false,
-      "persistent": true
-    },
-    "appwrite-codegen-types": {
-      "outputs": ["src/generated/appwrite.ts"]
-    },
-    "start": {
-      "dependsOn": ["^build"],
-      "cache": false,
-      "persistent": true
-    },
+    // "start": {
+    //   "dependsOn": ["^build"],
+    //   "cache": false,
+    //   "persistent": true
+    // },
     "clean": {
       "cache": false
     },
