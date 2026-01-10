@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "turbo dev",
     "build": "turbo build",
-    "check-types": "turbo check-types",
+    "typecheck": "turbo check-types",
     "dev:native": "turbo -F native dev",
     "dev:web": "turbo web#dev",
     "db:push": "turbo -F @saas-starter-with-monorepo/db db:push",

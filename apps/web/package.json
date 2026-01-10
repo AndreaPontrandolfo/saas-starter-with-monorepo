@@ -7,10 +7,13 @@
     "serve": "vite preview",
     "dev": "vite dev",
     "supabase:types": "supabase gen types typescript --local > src/database.types.ts",
-    "supabase:types:remote": "supabase gen types typescript --project-id \"$PROJECT_REF\" > src/database.types.ts"
+    "supabase:types:remote": "supabase gen types typescript --project-id \"$PROJECT_REF\" > src/database.types.ts",
+    "typecheck": "tsc",
+    "lint": "eslint",
+    "sheriff": "sheriff",
+    "clean": "rm -rf .turbo dist node_modules/.cache"
   },
   "dependencies": {
-    "@base-ui/react": "^1.0.0",
     "@mantine/core": "^8.3.10",
     "@mantine/hooks": "^8.3.10",
     "@mantine/notifications": "^8.3.10",
