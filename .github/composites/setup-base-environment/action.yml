@@ -1,0 +1,16 @@
+name: Base node environment
+description: It prepares a node environment with pnpm and dependencies installed
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Pnpm Setup
+      uses: pnpm/action-setup@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v6
+      with:
+        node-version-file: package.json
+        cache: 'pnpm'
+    - name: Install dependencies
+      shell: bash
+      run: pnpm install
