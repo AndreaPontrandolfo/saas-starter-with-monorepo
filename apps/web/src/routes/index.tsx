@@ -1,7 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute } from "@tanstack/react-router";
-import { Container, Paper, Stack, Group, Text, Indicator, Code } from "@mantine/core";
+import {
+  Container,
+  Paper,
+  Stack,
+  Group,
+  Text,
+  Indicator,
+  Code,
+} from "@mantine/core";
 import { orpc } from "@/utils/orpc";
+import { APP_NAME } from "@saas-starter-with-monorepo/constants";
 
 export const Route = createFileRoute("/")({
   component: HomeComponent,
@@ -13,7 +22,7 @@ function HomeComponent() {
   return (
     <Container size="md" py="xs" px="md">
       <Code block p="xs">
-        Demo
+        {APP_NAME}
       </Code>
       <Stack gap="lg" mt="md">
         <Paper p="md" withBorder>

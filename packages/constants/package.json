@@ -1,0 +1,32 @@
+{
+  "name": "@saas-starter-with-monorepo/constants",
+  "description": "Shared constants.",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "module": "./src/index.ts",
+  "sideEffects": false,
+  "files": [
+    "src"
+  ],
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "typecheck": "tsc",
+    "publint": "publint",
+    "clean": "rm -rf .turbo dist node_modules/.cache"
+  },
+  "devDependencies": {
+    "@saas-starter-with-monorepo/config": "workspace:*",
+    "@types/node": "^22.7.4",
+    "publint": "^0.2.12",
+    "typescript": "5.8.3"
+  }
+}

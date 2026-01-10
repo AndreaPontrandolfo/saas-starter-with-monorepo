@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@saas-starter-with-monorepo/config": "workspace:*",
+    "@saas-starter-with-monorepo/constants": "workspace:*",
     "@tanstack/devtools-vite": "^0.4.0",
     "@tanstack/react-devtools": "^0.9.0",
     "@tanstack/react-query-devtools": "^5.91.1",

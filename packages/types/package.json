@@ -1,0 +1,22 @@
+{
+  "name": "@saas-starter-with-monorepo/types",
+  "description": "Shared Typescript definitions.",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "sideEffects": false,
+  "scripts": {
+    "tsc:w": "tsc --watch",
+    "clean": "rm -rf .turbo dist node_modules/.cache",
+    "typecheck": "tsc",
+    "publint": "publint"
+  },
+  "devDependencies": {
+    "@saas-starter-with-monorepo/config": "workspace:*",
+    "@saas-starter-with-monorepo/types": "workspace:*",
+    "@types/node": "^22.7.4",
+    "publint": "^0.2.12",
+    "typescript": "5.8.3"
+  }
+}
