@@ -13,7 +13,7 @@
     "report-dead-code-extra": "knip --production --cache --exclude dependencies",
     "dev:native": "turbo -F native dev",
     "dev:web": "turbo web#dev",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write --experimental-cli --cache --cache-location=node_modules/.cache/.prettiercache .",
     "db:push": "turbo -F @saas-starter-with-monorepo/db db:push",
     "db:studio": "turbo -F @saas-starter-with-monorepo/db db:studio",
     "db:generate": "turbo -F @saas-starter-with-monorepo/db db:generate",
@@ -35,6 +35,7 @@
     "@saas-starter-with-monorepo/config": "workspace:*",
     "@types/node": "^22.13.11",
     "knip": "^5.80.2",
+    "lefthook": "^2.0.13",
     "prettier": "^3.7.4",
     "turbo": "^2.6.3",
     "typescript": "catalog:"
