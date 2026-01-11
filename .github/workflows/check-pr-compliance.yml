@@ -34,5 +34,5 @@ jobs:
           key: ${{ runner.os }}-turbo-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-turbo-
-      - name: Run qa checks
-        run: pnpm qa
+      - name: Run merge checks
+        run: pnpm merge-checks
