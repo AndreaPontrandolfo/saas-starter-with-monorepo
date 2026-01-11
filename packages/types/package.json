@@ -7,10 +7,9 @@
   "main": "./src/index.ts",
   "sideEffects": false,
   "scripts": {
-    "tsc:w": "tsc --watch",
-    "clean": "rm -rf .turbo dist node_modules/.cache",
     "typecheck": "tsc",
-    "publint": "publint"
+    "publint": "publint",
+    "clean": "rm -rf .turbo node_modules/.cache"
   },
   "devDependencies": {
     "@saas-starter-with-monorepo/config": "workspace:*",

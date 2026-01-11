@@ -5,6 +5,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "clean": "rm -rf .turbo dist node_modules/.cache"
+    "typecheck": "tsc",
+    "publint": "publint",
+    "clean": "rm -rf .turbo node_modules/.cache"
   }
 }

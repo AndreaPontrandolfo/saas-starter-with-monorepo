@@ -9,7 +9,11 @@
       "default": "./src/*.ts"
     }
   },
-  "scripts": {},
+  "scripts": {
+    "typecheck": "tsc",
+    "publint": "publint",
+    "clean": "rm -rf .turbo dist node_modules/.cache"
+  },
   "dependencies": {
     "@orpc/server": "catalog:",
     "@orpc/client": "catalog:",

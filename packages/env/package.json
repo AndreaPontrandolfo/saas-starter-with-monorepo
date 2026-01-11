@@ -8,6 +8,11 @@
     "./web": "./src/web.ts",
     "./native": "./src/native.ts"
   },
+  "scripts": {
+    "typecheck": "tsc",
+    "publint": "publint",
+    "clean": "rm -rf .turbo node_modules/.cache"
+  },
   "dependencies": {
     "zod": "catalog:",
     "@t3-oss/env-core": "^0.13.1",
