@@ -35,7 +35,6 @@
     "@saas-starter-with-monorepo/config": "workspace:*",
     "@types/node": "^22.13.11",
     "knip": "^5.80.2",
-    "lefthook": "^2.0.13",
     "prettier": "^3.7.4",
     "turbo": "^2.6.3",
     "typescript": "catalog:"
