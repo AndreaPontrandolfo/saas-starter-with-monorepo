@@ -3,16 +3,27 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "turbo dev",
-    "build": "turbo build",
-    "typecheck": "turbo check-types",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "sheriff": "turbo run sheriff",
+    "test": "turbo run test",
+    "report-dead-code": "knip --cache",
+    "report-dead-code-extra": "knip --production --cache --exclude dependencies",
     "dev:native": "turbo -F native dev",
     "dev:web": "turbo web#dev",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "db:push": "turbo -F @saas-starter-with-monorepo/db db:push",
     "db:studio": "turbo -F @saas-starter-with-monorepo/db db:studio",
     "db:generate": "turbo -F @saas-starter-with-monorepo/db db:generate",
     "db:migrate": "turbo -F @saas-starter-with-monorepo/db db:migrate",
-    "diagnostics:turbo-devtools": "turbo devtools"
+    "diagnostics:turbo-devtools": "turbo devtools",
+    "qa": "turbo run typecheck lint test sheriff build diagnostics:check-deps publint diagnostics:report-dead-code diagnostics:report-dead-code-extra diagnostics:typesync",
+    "bust-root-cache": "rm -rf .turbo ./node_modules/.cache",
+    "clean": "pnpm bust-root-cache && turbo run clean",
+    "delete-node-modules": "pnpm exec rm -rf node_modules && pnpm -r exec rm -rf node_modules",
+    "troubleshooting:reset-node-modules-and-lockfile": "pnpm delete-node-modules && pnpm exec rm -rf ./pnpm-lock.yaml && pnpm i"
   },
   "dependencies": {
     "@saas-starter-with-monorepo/env": "workspace:*",
@@ -20,8 +31,11 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@prettier/plugin-oxc": "^0.1.3",
     "@saas-starter-with-monorepo/config": "workspace:*",
     "@types/node": "^22.13.11",
+    "knip": "^5.80.2",
+    "prettier": "^3.7.4",
     "turbo": "^2.6.3",
     "typescript": "catalog:"
   },

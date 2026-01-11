@@ -1,0 +1,20 @@
+{
+  "$schema": "https://unpkg.com/knip@5/schema-jsonc.json",
+  "includeEntryExports": true,
+  // "ignoreExportsUsedInFile": true,
+  "workspaces": {
+    "packages/constants": {
+      // as of knip@5.62.0 with the --production flag, this was necessary. Revisit later.
+      "includeEntryExports": false
+    },
+    "packages/types": {
+      // as of knip@5.62.0 with the --production flag, this was necessary. Revisit later.
+      "includeEntryExports": false
+    }
+  },
+  // as of knip@5.62.0 with the --production flag, this was necessary. Revisit later.
+  "ignoreBinaries": ["vite"],
+  "rules": {
+    "binaries": "warn"
+  }
+}
