@@ -19,6 +19,13 @@
     "node_modules/@mantine/core/styles.css"
   ],
   //#endregion Mantine
+  "editor.linkedEditing": true,
+  "editor.suggest.localityBonus": true,
+  "editor.quickSuggestions": {
+    "other": "on",
+    "comments": "off",
+    "strings": "on"
+  },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
@@ -43,13 +50,17 @@
   "typescript.suggest.completeFunctionCalls": true,
   "json.schemaDownload.enable": true,
   "turbo.useLocalTurbo": true,
-  "editor.linkedEditing": true,
-  "editor.suggest.localityBonus": true,
-  "editor.quickSuggestions": {
-    "other": "on",
-    "comments": "off",
-    "strings": "on"
-  },
+  //#region npm-intellisense
   "npm-intellisense.showBuildInLibs": true,
-  "npm-intellisense.scanDevDependencies": true
+  "npm-intellisense.scanDevDependencies": true,
+  //#endregion npm-intellisense
+  //#region knip
+  "knip.requireConfig": true,
+  "knip.editor.exports.quickfix.jsdocTags": [
+    "@lintignore",
+    "@internal",
+    "@public",
+    "@knipignore"
+  ]
+  //#endregion knip
 }

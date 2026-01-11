@@ -10,7 +10,7 @@
     "sheriff": "turbo run sheriff",
     "test": "turbo run test",
     "report-dead-code": "knip --cache",
-    "report-dead-code-extra": "knip --production --cache --exclude dependencies",
+    "report-dead-code-extra": "knip --strict --cache",
     "publint": "turbo run publint",
     "dev:native": "turbo -F native dev",
     "dev:web": "turbo web#dev",

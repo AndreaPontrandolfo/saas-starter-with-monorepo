@@ -6,6 +6,10 @@
     "transit": {
       "dependsOn": ["^transit"]
     },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
@@ -17,6 +21,13 @@
     },
     "lint": {
       "dependsOn": ["transit"]
+    },
+    "test": {
+      "dependsOn": ["transit"],
+      "outputs": [
+        "vitest-output/coverage/**",
+        "node_modules/.cache/vitest/results.json"
+      ]
     },
     "sheriff": {
       "dependsOn": ["transit"]
@@ -42,10 +53,6 @@
       "dependsOn": ["transit"],
       "outputs": ["node_modules/.cache/knip/**"]
     },
-    "dev": {
-      "cache": false,
-      "persistent": true
-    },
     "db:push": {
       "cache": false,
       "persistent": true
@@ -64,13 +71,6 @@
     },
     "clean": {
       "cache": false
-    },
-    "test": {
-      "dependsOn": ["transit"],
-      "outputs": [
-        "vitest-output/coverage/**",
-        "node_modules/.cache/vitest/results.json"
-      ]
     }
   }
 }
