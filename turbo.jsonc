@@ -4,67 +4,73 @@
   "ui": "tui",
   "tasks": {
     "transit": {
-      "dependsOn": ["^transit"]
+      "dependsOn": ["^transit"],
     },
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**"],
     },
     "typecheck": {
       "dependsOn": ["transit"],
-      "outputs": ["node_modules/.cache/tsbuildinfo.json"]
+      "outputs": ["node_modules/.cache/tsbuildinfo.json"],
     },
     "lint": {
-      "dependsOn": ["transit"]
+      "dependsOn": ["transit"],
     },
     "sheriff": {
-      "dependsOn": ["transit"]
+      "dependsOn": ["transit"],
     },
     "publint": {
-      "dependsOn": ["transit"]
+      "dependsOn": ["transit"],
     },
-    "//#diagnostics:check-deps": {},
+    "format:check": {
+      "dependsOn": ["transit"],
+      "outputs": ["node_modules/.cache/.prettiercache"],
+    },
+    "format:write": {
+      "outputs": ["node_modules/.cache/.prettiercache"],
+    },
+    "//#diagnostics:check-deps": {
+      "dependsOn": ["transit"],
+    },
     "//#diagnostics:report-dead-code": {
-      "outputs": ["node_modules/.cache/knip/**"]
+      "dependsOn": ["transit"],
+      "outputs": ["node_modules/.cache/knip/**"],
     },
     "//#diagnostics:report-dead-code-extra": {
-      "outputs": ["node_modules/.cache/knip/**"]
+      "dependsOn": ["transit"],
+      "outputs": ["node_modules/.cache/knip/**"],
     },
     "dev": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
     },
     "db:push": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
     },
     "db:studio": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
     },
     "db:migrate": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
     },
     "db:generate": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
     },
-    // "start": {
-    //   "dependsOn": ["^build"],
-    //   "cache": false,
-    //   "persistent": true
-    // },
     "clean": {
-      "cache": false
+      "cache": false,
     },
     "test": {
       "dependsOn": ["transit"],
       "outputs": [
         "vitest-output/coverage/**",
-        "node_modules/.cache/vitest/results.json"
-      ]
-    }
-  }
+        "node_modules/.cache/vitest/results.json",
+      ],
+    },
+  },
 }
