@@ -63,10 +63,10 @@ Note: You'll also need to add a `user_id UUID REFERENCES auth.users(id)` column 
 ## Testing
 
 After running the SQL:
+
 1. Make sure your `.env` file has the Supabase credentials
 2. Start the dev server: `pnpm dev`
 3. Navigate to `/todos` in your web app
 4. Try adding, completing, and deleting todos
 
 The data will now persist in your Supabase database!
-

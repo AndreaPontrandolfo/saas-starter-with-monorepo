@@ -18,12 +18,18 @@ function Modal() {
         <Card variant="secondary" className="p-6 w-full max-w-sm">
           <Card.Body className="gap-4 items-center">
             <View className="w-16 h-16 bg-accent rounded-full items-center justify-center mb-2">
-              <Ionicons name="checkmark" size={32} color={accentForegroundColor} />
+              <Ionicons
+                name="checkmark"
+                size={32}
+                color={accentForegroundColor}
+              />
             </View>
-            <Card.Title className="text-center text-xl">Modal Screen</Card.Title>
+            <Card.Title className="text-center text-xl">
+              Modal Screen
+            </Card.Title>
             <Card.Description className="text-center">
-              This is an example modal screen. You can use this pattern for dialogs, confirmations,
-              or any overlay content.
+              This is an example modal screen. You can use this pattern for
+              dialogs, confirmations, or any overlay content.
             </Card.Description>
           </Card.Body>
           <Card.Footer className="mt-4">
@@ -35,7 +41,11 @@ function Modal() {
                 <Text className="text-accent-foreground font-semibold text-base mr-2">
                   Close Modal
                 </Text>
-                <Ionicons name="close-circle" size={20} color={accentForegroundColor} />
+                <Ionicons
+                  name="close-circle"
+                  size={20}
+                  color={accentForegroundColor}
+                />
               </View>
             </Pressable>
           </Card.Footer>

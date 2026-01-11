@@ -72,7 +72,9 @@ function SignUpComponent() {
   if (authLoading || user) {
     return (
       <Container size={420} my={40}>
-        <div style={{ display: "flex", justifyContent: "center", marginTop: 40 }}>
+        <div
+          style={{ display: "flex", justifyContent: "center", marginTop: 40 }}
+        >
           <Loader size="lg" />
         </div>
       </Container>
@@ -114,7 +116,13 @@ function SignUpComponent() {
             onChange={(e) => setPassword(e.target.value)}
             disabled={loading}
           />
-          <Button fullWidth mt="xl" radius="md" type="submit" disabled={loading}>
+          <Button
+            fullWidth
+            mt="xl"
+            radius="md"
+            type="submit"
+            disabled={loading}
+          >
             {loading ? <Loader size="sm" /> : "Sign up"}
           </Button>
         </form>

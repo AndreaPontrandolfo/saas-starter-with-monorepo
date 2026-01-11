@@ -1,5 +1,9 @@
 import { useState, useEffect } from "react";
-import { createFileRoute, useNavigate, useSearch } from "@tanstack/react-router";
+import {
+  createFileRoute,
+  useNavigate,
+  useSearch,
+} from "@tanstack/react-router";
 import {
   Anchor,
   Button,
@@ -75,7 +79,9 @@ function LoginComponent() {
   if (authLoading || user) {
     return (
       <Container size={420} my={40}>
-        <div style={{ display: "flex", justifyContent: "center", marginTop: 40 }}>
+        <div
+          style={{ display: "flex", justifyContent: "center", marginTop: 40 }}
+        >
           <Loader size="lg" />
         </div>
       </Container>
@@ -118,16 +124,17 @@ function LoginComponent() {
             disabled={loading}
           />
           <Group justify="space-between" mt="lg">
-            <Anchor
-              component={Link}
-              to="/forgot-password"
-              size="sm"
-              c="dimmed"
-            >
+            <Anchor component={Link} to="/forgot-password" size="sm" c="dimmed">
               Forgot password?
             </Anchor>
           </Group>
-          <Button fullWidth mt="xl" radius="md" type="submit" disabled={loading}>
+          <Button
+            fullWidth
+            mt="xl"
+            radius="md"
+            type="submit"
+            disabled={loading}
+          >
             {loading ? <Loader size="sm" /> : "Sign in"}
           </Button>
         </form>

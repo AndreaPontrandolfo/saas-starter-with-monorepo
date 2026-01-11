@@ -9,16 +9,9 @@
   "orm": "drizzle",
   "backend": "self",
   "runtime": "none",
-  "frontend": [
-    "tanstack-start",
-    "native-uniwind"
-  ],
-  "addons": [
-    "turborepo"
-  ],
-  "examples": [
-    "todo"
-  ],
+  "frontend": ["tanstack-start", "native-uniwind"],
+  "addons": ["turborepo"],
+  "examples": ["todo"],
   "auth": "none",
   "payments": "none",
   "packageManager": "pnpm",

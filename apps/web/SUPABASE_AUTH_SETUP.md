@@ -16,7 +16,7 @@ Run these SQL statements in your Supabase SQL Editor (Dashboard → SQL Editor):
 
 ```sql
 -- Add user_id column with foreign key to auth.users
-ALTER TABLE public.todos 
+ALTER TABLE public.todos
 ADD COLUMN user_id UUID NOT NULL REFERENCES auth.users(id);
 
 -- Create index for better query performance
@@ -24,6 +24,7 @@ CREATE INDEX idx_todos_user_id ON public.todos(user_id);
 ```
 
 **Note:** If you have existing todos in the table, you'll need to either:
+
 - Delete existing todos: `DELETE FROM public.todos;`
 - Or assign them to a user: `UPDATE public.todos SET user_id = '<your-user-id>' WHERE user_id IS NULL;`
 
@@ -74,7 +75,9 @@ In Supabase Dashboard → Authentication → Email Templates → Confirm signup:
 
 <p>Follow this link to confirm your user:</p>
 <p>
-  <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next={{ .RedirectTo }}">
+  <a
+    href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next={{ .RedirectTo }}"
+  >
     Confirm your email
   </a>
 </p>
@@ -89,7 +92,9 @@ In Supabase Dashboard → Authentication → Email Templates → Reset password:
 
 <p>Follow this link to reset the password for your user:</p>
 <p>
-  <a href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=recovery&next={{ .RedirectTo }}">
+  <a
+    href="{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=recovery&next={{ .RedirectTo }}"
+  >
     Reset Password
   </a>
 </p>
@@ -135,4 +140,3 @@ After completing the setup:
 - Verify SMTP settings if using custom SMTP
 - Check spam folder
 - For local development, emails may be sent to the Supabase logs (Dashboard → Logs → Auth Logs)
-

@@ -1,12 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  Anchor,
-  Button,
-  Container,
-  Paper,
-  Text,
-  Title,
-} from "@mantine/core";
+import { Anchor, Button, Container, Paper, Text, Title } from "@mantine/core";
 
 export const Route = createFileRoute("/sign-up-success")({
   component: SignUpSuccessComponent,
@@ -21,8 +14,8 @@ function SignUpSuccessComponent() {
 
       <Paper withBorder shadow="sm" p={30} mt={30} radius="md">
         <Text size="sm" c="dimmed" mb="lg">
-          We've sent you a confirmation email. Please check your inbox and
-          click the confirmation link to activate your account.
+          We've sent you a confirmation email. Please check your inbox and click
+          the confirmation link to activate your account.
         </Text>
 
         <Button

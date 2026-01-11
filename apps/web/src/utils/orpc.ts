@@ -30,7 +30,7 @@ const getORPCClient = createIsomorphicFn()
       context: async ({ req }) => {
         return createContext({ req });
       },
-    })
+    }),
   )
   .client((): RouterClient<typeof appRouter> => {
     const link = new RPCLink({

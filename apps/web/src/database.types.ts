@@ -16,49 +16,49 @@ export type Json =
   | boolean
   | null
   | { [key: string]: Json | undefined }
-  | Json[]
+  | Json[];
 
 export interface Database {
   public: {
     Tables: {
       todos: {
         Row: {
-          id: number
-          text: string
-          completed: boolean
-          user_id: string
-          created_at: string
-        }
+          id: number;
+          text: string;
+          completed: boolean;
+          user_id: string;
+          created_at: string;
+        };
         Insert: {
-          id?: never
-          text: string
-          completed?: boolean
-          user_id: string
-          created_at?: string
-        }
+          id?: never;
+          text: string;
+          completed?: boolean;
+          user_id: string;
+          created_at?: string;
+        };
         Update: {
-          id?: never
-          text?: string
-          completed?: boolean
-          user_id?: string
-          created_at?: string
-        }
-        Relationships: []
-      }
-    }
+          id?: never;
+          text?: string;
+          completed?: boolean;
+          user_id?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
+    };
     Views: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     Functions: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     Enums: {
-      [_ in never]: never
-    }
+      [_ in never]: never;
+    };
     CompositeTypes: {
-      [_ in never]: never
-    }
-  }
+      [_ in never]: never;
+    };
+  };
 }
 
 // Helper types for easier access
@@ -66,14 +66,16 @@ export type Tables<
   PublicTableNameOrOptions extends
     | keyof (Database["public"]["Tables"] & Database["public"]["Views"])
     | { schema: keyof Database },
-  PublicTableName extends PublicTableNameOrOptions extends { schema: keyof Database }
+  PublicTableName extends PublicTableNameOrOptions extends {
+    schema: keyof Database;
+  }
     ? keyof (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
         Database[PublicTableNameOrOptions["schema"]]["Views"])
     : never = never,
 > = PublicTableNameOrOptions extends { schema: keyof Database }
   ? (Database[PublicTableNameOrOptions["schema"]]["Tables"] &
       Database[PublicTableNameOrOptions["schema"]]["Views"])[PublicTableName] extends {
-      Row: infer R
+      Row: infer R;
     }
     ? R
     : never
@@ -81,22 +83,23 @@ export type Tables<
         Database["public"]["Views"])
     ? (Database["public"]["Tables"] &
         Database["public"]["Views"])[PublicTableNameOrOptions] extends {
-        Row: infer R
+        Row: infer R;
       }
       ? R
       : never
-    : never
+    : never;
 
 export type Enums<
   PublicEnumNameOrOptions extends
     | keyof Database["public"]["Enums"]
     | { schema: keyof Database },
-  PublicEnumName extends PublicEnumNameOrOptions extends { schema: keyof Database }
+  PublicEnumName extends PublicEnumNameOrOptions extends {
+    schema: keyof Database;
+  }
     ? keyof Database[PublicEnumNameOrOptions["schema"]]["Enums"]
     : never = never,
 > = PublicEnumNameOrOptions extends { schema: keyof Database }
   ? Database[PublicEnumNameOrOptions["schema"]]["Enums"][PublicEnumName]
   : PublicEnumNameOrOptions extends keyof Database["public"]["Enums"]
     ? Database["public"]["Enums"][PublicEnumNameOrOptions]
-    : never
-
+    : never;

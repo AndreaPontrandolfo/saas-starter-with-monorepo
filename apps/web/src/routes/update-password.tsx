@@ -71,7 +71,8 @@ function UpdatePasswordComponent() {
     } catch (error: unknown) {
       notifications.show({
         title: "Error",
-        message: error instanceof Error ? error.message : "Failed to update password",
+        message:
+          error instanceof Error ? error.message : "Failed to update password",
         color: "red",
       });
     } finally {
@@ -106,7 +107,13 @@ function UpdatePasswordComponent() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             disabled={loading}
           />
-          <Button fullWidth mt="xl" radius="md" type="submit" disabled={loading}>
+          <Button
+            fullWidth
+            mt="xl"
+            radius="md"
+            type="submit"
+            disabled={loading}
+          >
             {loading ? <Loader size="sm" /> : "Update password"}
           </Button>
         </form>

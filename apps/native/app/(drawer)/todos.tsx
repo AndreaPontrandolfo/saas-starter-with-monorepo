@@ -76,7 +76,9 @@ export default function TodosScreen() {
       <ScrollView className="flex-1" contentContainerClassName="p-6">
         <View className="mb-6">
           <View className="flex-row items-center justify-between mb-2">
-            <Text className="text-3xl font-bold text-foreground">Todo List</Text>
+            <Text className="text-3xl font-bold text-foreground">
+              Todo List
+            </Text>
             {totalCount > 0 && (
               <Chip variant="secondary" color="accent" size="sm">
                 <Chip.Label>
@@ -113,7 +115,9 @@ export default function TodosScreen() {
                   name="add"
                   size={24}
                   color={
-                    createMutation.isPending || !newTodoText.trim() ? mutedColor : foregroundColor
+                    createMutation.isPending || !newTodoText.trim()
+                      ? mutedColor
+                      : foregroundColor
                   }
                 />
               )}
@@ -136,8 +140,12 @@ export default function TodosScreen() {
               color={mutedColor}
               style={{ marginBottom: 16 }}
             />
-            <Text className="text-foreground text-lg font-semibold mb-2">No todos yet</Text>
-            <Text className="text-muted text-center">Add your first task to get started!</Text>
+            <Text className="text-foreground text-lg font-semibold mb-2">
+              No todos yet
+            </Text>
+            <Text className="text-muted text-center">
+              Add your first task to get started!
+            </Text>
           </Card>
         )}
 
@@ -148,7 +156,9 @@ export default function TodosScreen() {
                 <View className="flex-row items-center gap-3">
                   <Checkbox
                     isSelected={todo.completed}
-                    onSelectedChange={() => handleToggleTodo(todo.id, todo.completed)}
+                    onSelectedChange={() =>
+                      handleToggleTodo(todo.id, todo.completed)
+                    }
                   />
                   <View className="flex-1">
                     <Text
@@ -161,7 +171,11 @@ export default function TodosScreen() {
                     onPress={() => handleDeleteTodo(todo.id)}
                     className="p-2 rounded-lg active:opacity-70"
                   >
-                    <Ionicons name="trash-outline" size={24} color={dangerColor} />
+                    <Ionicons
+                      name="trash-outline"
+                      size={24}
+                      color={dangerColor}
+                    />
                   </Pressable>
                 </View>
               </Card>

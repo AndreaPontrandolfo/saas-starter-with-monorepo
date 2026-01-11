@@ -5,6 +5,7 @@
 ✅ The web app is now running in **no-database mode**.
 
 All todo data is stored in memory using a mock implementation. The app will work exactly the same from the UI perspective, but:
+
 - Data resets when the server restarts
 - No database connection is required
 - No `DATABASE_URL` environment variable needed
@@ -24,10 +25,10 @@ The change is a simple 2-line comment toggle - no code deletion or major refacto
 ## Testing
 
 You can now run the web app with:
+
 ```bash
 pnpm install
 pnpm dev
 ```
 
 No database setup required!
-

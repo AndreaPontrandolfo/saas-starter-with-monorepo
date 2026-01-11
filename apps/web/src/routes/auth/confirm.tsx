@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { createFileRoute, useNavigate, useSearch } from "@tanstack/react-router";
+import {
+  createFileRoute,
+  useNavigate,
+  useSearch,
+} from "@tanstack/react-router";
 import { Container, Loader, Text, Title } from "@mantine/core";
 import { supabase } from "@/utils/supabase";
 import { notifications } from "@mantine/notifications";
@@ -33,7 +37,8 @@ function ConfirmComponent() {
         // Verify the OTP token
         const { error: verifyError } = await supabase.auth.verifyOtp({
           token_hash,
-          type: (type as "email" | "recovery" | "magiclink" | "signup") || "email",
+          type:
+            (type as "email" | "recovery" | "magiclink" | "signup") || "email",
         });
 
         if (verifyError) throw verifyError;
@@ -75,7 +80,9 @@ function ConfirmComponent() {
         <Title ta="center" mb="md">
           Confirming...
         </Title>
-        <div style={{ display: "flex", justifyContent: "center", marginTop: 40 }}>
+        <div
+          style={{ display: "flex", justifyContent: "center", marginTop: 40 }}
+        >
           <Loader size="lg" />
         </div>
       </Container>

@@ -38,8 +38,8 @@ function HomeComponent() {
                 {healthCheck.isLoading
                   ? "Checking..."
                   : healthCheck.data
-                  ? "Connected"
-                  : "Disconnected"}
+                    ? "Connected"
+                    : "Disconnected"}
               </Text>
             </Group>
           </Stack>

@@ -41,9 +41,10 @@ export const todoRouterMock = {
       return todo;
     }),
 
-  delete: publicProcedure.input(z.object({ id: z.number() })).handler(async ({ input }) => {
-    mockTodos = mockTodos.filter((t) => t.id !== input.id);
-    return { success: true };
-  }),
+  delete: publicProcedure
+    .input(z.object({ id: z.number() }))
+    .handler(async ({ input }) => {
+      mockTodos = mockTodos.filter((t) => t.id !== input.id);
+      return { success: true };
+    }),
 };
-

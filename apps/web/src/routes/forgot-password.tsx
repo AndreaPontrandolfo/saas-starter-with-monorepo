@@ -43,7 +43,8 @@ function ForgotPasswordComponent() {
     } catch (error: unknown) {
       notifications.show({
         title: "Error",
-        message: error instanceof Error ? error.message : "Failed to send reset email",
+        message:
+          error instanceof Error ? error.message : "Failed to send reset email",
         color: "red",
       });
     } finally {
@@ -100,7 +101,13 @@ function ForgotPasswordComponent() {
             type="email"
             disabled={loading}
           />
-          <Button fullWidth mt="xl" radius="md" type="submit" disabled={loading}>
+          <Button
+            fullWidth
+            mt="xl"
+            radius="md"
+            type="submit"
+            disabled={loading}
+          >
             {loading ? <Loader size="sm" /> : "Send reset email"}
           </Button>
         </form>
