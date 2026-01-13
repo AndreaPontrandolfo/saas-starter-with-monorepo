@@ -22,4 +22,4 @@ onlyBuiltDependencies:
   - esbuild
   - msw
   - supabase
-  - unrs-resolve
+  - unrs-resolver
