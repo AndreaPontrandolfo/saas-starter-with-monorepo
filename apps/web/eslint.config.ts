@@ -14,23 +14,27 @@ const sheriffOptions: SheriffSettings = {
   tsconfigRootDir: import.meta.dirname,
 };
 
-export default defineConfig(sheriff(sheriffOptions), {
-  files: ["**/*.types.ts"],
-  rules: {
-    "no-restricted-syntax": [
-      2,
-      {
-        selector: "VariableDeclaration",
-        message: "Variable declarations are not allowed in types files.",
-      },
-      {
-        selector: "FunctionDeclaration",
-        message: "Function declarations are not allowed in types files.",
-      },
-      {
-        selector: "ExpressionStatement",
-        message: "Expression statements are not allowed in types files.",
-      },
-    ],
+export default defineConfig(
+  sheriff(sheriffOptions),
+  {
+    files: ["**/*.types.ts"],
+    rules: {
+      "no-restricted-syntax": [
+        2,
+        {
+          selector: "VariableDeclaration",
+          message: "Variable declarations are not allowed in types files.",
+        },
+        {
+          selector: "FunctionDeclaration",
+          message: "Function declarations are not allowed in types files.",
+        },
+        {
+          selector: "ExpressionStatement",
+          message: "Expression statements are not allowed in types files.",
+        },
+      ],
+    },
   },
-});
+  { ignores: ["./src/routeTree.gen.ts"] },
+);
