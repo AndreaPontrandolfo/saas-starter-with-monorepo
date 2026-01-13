@@ -1,5 +1,6 @@
 disallowWorkspaceCycles: true
 verifyDepsBeforeRun: "warn"
+useNodeVersion: 24.12.0
 
 packages:
   - apps/*
