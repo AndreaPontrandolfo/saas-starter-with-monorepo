@@ -4,14 +4,14 @@
   "type": "module",
   "scripts": {
     "build": "vite build",
-    "serve": "vite preview",
+    "clean": "rm -rf .turbo dist node_modules/.cache",
     "dev": "vite dev",
+    "lint": "eslint --max-warnings=0",
+    "serve": "vite preview",
+    "sheriff": "sheriff",
     "supabase:types": "supabase gen types typescript --local > src/database.types.ts",
     "supabase:types:remote": "supabase gen types typescript --project-id \"$PROJECT_REF\" > src/database.types.ts",
-    "typecheck": "tsc",
-    "lint": "eslint --max-warnings=0",
-    "sheriff": "sheriff",
-    "clean": "rm -rf .turbo dist node_modules/.cache"
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@mantine/core": "^8.3.10",
