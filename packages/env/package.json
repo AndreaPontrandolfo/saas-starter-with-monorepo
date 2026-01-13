@@ -14,13 +14,16 @@
     "clean": "rm -rf .turbo node_modules/.cache"
   },
   "dependencies": {
-    "zod": "catalog:",
     "@t3-oss/env-core": "^0.13.1",
-    "dotenv": "catalog:"
+    "dotenv": "catalog:",
+    "zod": "catalog:"
   },
   "devDependencies": {
-    "typescript": "catalog:",
+    "@saas-starter-with-monorepo/config": "workspace:*",
     "@types/node": "^22.13.11",
-    "@saas-starter-with-monorepo/config": "workspace:*"
+    "eslint": "^9.39.2",
+    "eslint-config-sheriff": "^31.1.0",
+    "jiti": "^2.6.1",
+    "typescript": "catalog:"
   }
 }

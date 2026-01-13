@@ -1,3 +1,4 @@
 {
-  "extends": "@saas-starter-with-monorepo/config/tsconfig.base.json"
+  "extends": "@saas-starter-with-monorepo/config/tsconfig.base.json",
+  "include": ["./src", "./eslint.config.ts"]
 }

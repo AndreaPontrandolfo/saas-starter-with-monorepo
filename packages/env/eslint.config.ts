@@ -10,22 +10,8 @@ const sheriffOptions: SheriffSettings = {
   playwright: false,
   storybook: true,
   jest: false,
-  vitest: true,
+  vitest: false,
   tsconfigRootDir: import.meta.dirname,
 };
 
-export default defineConfig(
-  sheriff(sheriffOptions),
-  {
-    files: ["**/*.test.ts"],
-    rules: {
-      "vitest/max-nested-describe": [
-        2,
-        {
-          max: 1,
-        },
-      ],
-    },
-  },
-  { ignores: ["**/vitest-output/**/*"] },
-);
+export default defineConfig(sheriff(sheriffOptions));

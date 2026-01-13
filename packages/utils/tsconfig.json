@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "extends": "@saas-starter-with-monorepo/config/tsconfig.base.json",
-  "include": ["./src", "./vitest.config.ts"],
+  "include": ["./src", "./vitest.config.ts", "./eslint.config.ts"],
   "compilerOptions": {
     "types": ["vitest", "node"],
     "typeRoots": ["./node_modules", "./node_modules/@types"]
