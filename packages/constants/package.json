@@ -19,12 +19,15 @@
     }
   },
   "scripts": {
+    "lint": "eslint --max-warnings=0",
+    "sheriff": "sheriff",
     "typecheck": "tsc",
     "publint": "publint",
     "clean": "rm -rf .turbo node_modules/.cache"
   },
   "devDependencies": {
     "@saas-starter-with-monorepo/config": "workspace:*",
+    "@sherifforg/cli": "^8.7.0",
     "@types/node": "^22.7.4",
     "eslint": "^9.39.2",
     "eslint-config-sheriff": "^31.1.0",

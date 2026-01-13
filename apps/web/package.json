@@ -9,7 +9,7 @@
     "supabase:types": "supabase gen types typescript --local > src/database.types.ts",
     "supabase:types:remote": "supabase gen types typescript --project-id \"$PROJECT_REF\" > src/database.types.ts",
     "typecheck": "tsc",
-    "lint": "eslint",
+    "lint": "eslint --max-warnings=0",
     "sheriff": "sheriff",
     "clean": "rm -rf .turbo dist node_modules/.cache"
   },
@@ -39,6 +39,7 @@
   "devDependencies": {
     "@saas-starter-with-monorepo/config": "workspace:*",
     "@saas-starter-with-monorepo/constants": "workspace:*",
+    "@sherifforg/cli": "^8.7.0",
     "@tanstack/devtools-vite": "^0.4.0",
     "@tanstack/react-devtools": "^0.9.0",
     "@tanstack/react-query-devtools": "^5.91.1",

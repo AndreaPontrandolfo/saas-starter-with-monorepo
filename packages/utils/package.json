@@ -21,11 +21,11 @@
     "clean": "rm -rf .turbo node_modules/.cache vitest-output"
   },
   "devDependencies": {
-    "@sherifforg/cli": "^8.6.0",
-    "@types/node": "22.5.2",
-    "@saas-starter-with-monorepo/constants": "workspace:*",
     "@saas-starter-with-monorepo/config": "workspace:*",
+    "@saas-starter-with-monorepo/constants": "workspace:*",
     "@saas-starter-with-monorepo/types": "workspace:*",
+    "@sherifforg/cli": "^8.7.0",
+    "@types/node": "22.5.2",
     "@vitest/coverage-v8": "^3.2.4",
     "@vitest/ui": "^3.2.4",
     "eslint": "9.39.2",
