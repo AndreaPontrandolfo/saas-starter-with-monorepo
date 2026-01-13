@@ -1,0 +1,37 @@
+{
+  "name": "@saas-starter-with-monorepo/utils",
+  "description": "Shared utility functions.",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "files": [
+    "src"
+  ],
+  "exports": {
+    "./sample-function": "./src/sampleFunction.ts"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "clean": "rm -rf .turbo node_modules/.cache vitest-output",
+    "typecheck": "tsc",
+    "lint": "eslint --max-warnings=0",
+    "test": "vitest run --sequence.concurrent --silent --coverage",
+    "test:watch": "vitest --ui --coverage --reporter=default --reporter=html --outputFile=./vitest-output/vitest-results/index.html",
+    "publint": "publint",
+    "sheriff": "sheriff"
+  },
+  "devDependencies": {
+    "@sherifforg/cli": "^8.6.0",
+    "@types/node": "22.5.2",
+    "@saas-starter-with-monorepo/constants": "workspace:*",
+    "@saas-starter-with-monorepo/config": "workspace:*",
+    "@saas-starter-with-monorepo/types": "workspace:*",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
+    "eslint": "9.36.0",
+    "eslint-config-sheriff": "29.0.0",
+    "publint": "^0.2.12",
+    "typescript": "5.8.3",
+    "vitest": "^3.2.4"
+  }
+}

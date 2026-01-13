@@ -4,6 +4,9 @@
       "command": "npx",
       "args": ["@eslint/mcp@latest"],
       "env": {}
+    },
+    "tanstack": {
+      "url": "https://tanstack.com/api/mcp"
     }
   }
 }

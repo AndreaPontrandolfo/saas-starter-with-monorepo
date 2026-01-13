@@ -40,8 +40,7 @@
   "explorer.fileNesting.enabled": true,
   "explorer.fileNesting.expand": false,
   "explorer.fileNesting.patterns": {
-    "*.ts": "${capture}.test.ts",
-    "*.tsx": "${capture}.spec.ts"
+    "*.ts": "${capture}.test.ts"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
