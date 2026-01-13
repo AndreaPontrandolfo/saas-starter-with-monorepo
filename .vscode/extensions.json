@@ -12,6 +12,7 @@
     "redhat.vscode-yaml",
     "yoavbls.pretty-ts-errors",
     "vercel.turbo-vsc",
-    "webpro.vscode-knip"
+    "webpro.vscode-knip",
+    "expo.vscode-expo-tools"
   ]
 }

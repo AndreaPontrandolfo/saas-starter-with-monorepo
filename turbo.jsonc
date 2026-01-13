@@ -35,11 +35,11 @@
     "publint": {
       "dependsOn": ["transit"]
     },
-    "format:check": {
+    "//#format:check": {
       "dependsOn": ["transit"],
       "outputs": ["node_modules/.cache/.prettiercache"]
     },
-    "format:write": {
+    "//#format:write": {
       "outputs": ["node_modules/.cache/.prettiercache"]
     },
     "//#diagnostics:check-deps": {
