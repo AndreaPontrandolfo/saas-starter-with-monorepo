@@ -15,8 +15,14 @@
     "@expo/metro-runtime": "~6.1.2",
     "@expo/vector-icons": "^15.0.3",
     "@gorhom/bottom-sheet": "^5.2.6",
+    "@orpc/client": "catalog:",
+    "@orpc/tanstack-query": "catalog:",
     "@react-navigation/drawer": "^7.3.9",
     "@react-navigation/elements": "^2.8.1",
+    "@saas-starter-with-monorepo/api": "workspace:*",
+    "@saas-starter-with-monorepo/env": "workspace:*",
+    "@tanstack/react-query": "catalog:",
+    "dotenv": "catalog:",
     "expo": "^54.0.23",
     "expo-constants": "~18.0.10",
     "expo-font": "~14.0.9",
@@ -42,18 +48,15 @@
     "tailwind-variants": "3.1.1",
     "tailwindcss": "~4.1.17",
     "uniwind": "^1.0.4",
-    "@orpc/tanstack-query": "catalog:",
-    "@orpc/client": "catalog:",
-    "@tanstack/react-query": "catalog:",
-    "dotenv": "catalog:",
-    "zod": "catalog:",
-    "@saas-starter-with-monorepo/env": "workspace:*",
-    "@saas-starter-with-monorepo/api": "workspace:*"
+    "zod": "catalog:"
   },
   "devDependencies": {
+    "@saas-starter-with-monorepo/config": "workspace:*",
     "@types/node": "^24.10.0",
     "@types/react": "~19.1.0",
-    "typescript": "catalog:",
-    "@saas-starter-with-monorepo/config": "workspace:*"
+    "eslint": "^9.39.2",
+    "eslint-config-sheriff": "^31.1.0",
+    "jiti": "^2.6.1",
+    "typescript": "catalog:"
   }
 }
