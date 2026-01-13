@@ -1,3 +1,1 @@
-export const sampleFunction = (param: string) => {
-  return param;
-};
+export const sampleFunction = (param: string): string => param;

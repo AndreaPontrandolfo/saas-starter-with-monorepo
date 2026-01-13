@@ -1,14 +1,7 @@
-import { defineConfig, loadEnv, type UserConfigExport } from "vite";
+import { defineConfig } from "vitest/config";
 
-interface ConfigOptions {
-  mode: string;
-  command: string;
-}
-
-const viteConfig = ({ mode }: ConfigOptions): UserConfigExport => {
-  process.env = { ...process.env, ...loadEnv(mode, process.cwd()) };
-
-  return defineConfig({
+export default defineConfig(() => {
+  return {
     cacheDir: "./node_modules/.cache/vite",
     test: {
       coverage: {
@@ -42,7 +35,5 @@ const viteConfig = ({ mode }: ConfigOptions): UserConfigExport => {
         ],
       },
     },
-  });
-};
-
-export default viteConfig;
+  };
+});

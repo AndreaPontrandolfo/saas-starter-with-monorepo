@@ -12,13 +12,13 @@
   },
   "sideEffects": false,
   "scripts": {
-    "clean": "rm -rf .turbo node_modules/.cache vitest-output",
     "typecheck": "tsc",
     "lint": "eslint --max-warnings=0",
     "test": "vitest run --sequence.concurrent --silent --coverage",
     "test:watch": "vitest --ui --coverage --reporter=default --reporter=html --outputFile=./vitest-output/vitest-results/index.html",
     "publint": "publint",
-    "sheriff": "sheriff"
+    "sheriff": "sheriff",
+    "clean": "rm -rf .turbo node_modules/.cache vitest-output"
   },
   "devDependencies": {
     "@sherifforg/cli": "^8.6.0",
