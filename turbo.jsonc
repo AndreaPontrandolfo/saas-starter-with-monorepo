@@ -42,14 +42,14 @@
     "//#format:write": {
       "outputs": ["node_modules/.cache/.prettiercache"]
     },
-    "//#diagnostics:check-deps": {
+    "//#check-deps": {
       "dependsOn": ["transit"]
     },
-    "//#diagnostics:report-dead-code": {
+    "//#report-dead-code": {
       "dependsOn": ["transit"],
       "outputs": ["node_modules/.cache/knip/**"]
     },
-    "//#diagnostics:report-dead-code-extra": {
+    "//#report-dead-code-extra": {
       "dependsOn": ["transit"],
       "outputs": ["node_modules/.cache/knip/**"]
     },

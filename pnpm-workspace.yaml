@@ -1,6 +1,8 @@
 disallowWorkspaceCycles: true
 verifyDepsBeforeRun: "warn"
 useNodeVersion: 24.12.0
+catalogMode: strict
+cleanupUnusedCatalogs: true
 
 packages:
   - apps/*
