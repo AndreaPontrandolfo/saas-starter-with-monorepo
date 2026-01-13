@@ -39,6 +39,7 @@
     "dotenv": "catalog:",
     "knip": "^5.80.2",
     "prettier": "^3.7.4",
+    "prettier-plugin-packagejson": "catalog:",
     "turbo": "^2.6.3",
     "typescript": "catalog:",
     "zod": "catalog:"

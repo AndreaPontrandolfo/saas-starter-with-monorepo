@@ -13,6 +13,7 @@
     "yoavbls.pretty-ts-errors",
     "vercel.turbo-vsc",
     "webpro.vscode-knip",
-    "expo.vscode-expo-tools"
+    "expo.vscode-expo-tools",
+    "antfu.pnpm-catalog-lens"
   ]
 }
